@@ -1,0 +1,28 @@
+# By default, log to the console, override by passing LOG= something other than 'console' at the command line
+ENV['LOG'] ||= 'console' if !Object.const_defined?('RAILS_DEFAULT_LOGGER')
+
+# Set up logging to the console
+if ENV['LOG'] && ENV['LOG'].downcase == 'console'
+  # Rails.config.to_prepare do
+  #   log_to_console!
+  # end
+end
+
+# Set up the prompt to be slightly more informative
+rails_env = case ENV['RAILS_ENV'].downcase
+ when 'test' then 'test'
+ when /local_(.*)/ then 'local_' + $1[0,3]
+ else ENV['RAILS_ENV'].downcase[0,3]
+end
+current_app = Dir.pwd.split('/').last
+IRB.conf[:PROMPT][:RAILS_ENV] ||= { :PROMPT_I => "#{current_app} #{rails_env} >> ",
+                                    :PROMPT_N => "#{current_app} #{rails_env} >> ",
+                                    :PROMPT_S => nil,
+                                    :PROMPT_C => "?> ",
+                                    :RETURN=>"=> %s\n" }
+IRB.conf[:PROMPT_MODE] = :RAILS_ENV
+
+def log_to_console!
+  ActiveRecord::Base.logger = Logger.new(STDOUT)
+  ActiveRecord::Base.clear_active_connections!
+end

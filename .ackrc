@@ -1,0 +1,15 @@
+--type-set=log=.log
+--type-add=ruby=.haml
+--type-set=sass=.scss,.sass
+--type-add=objc=.pch
+--type-set=xcode=.pbxproj,.pbxuser,.perspectivev3
+--type-set=ragel=.rl
+--type-set=nib=.xib
+--type-set=plist=.plist
+--type-set=tmstuff=.tmproj,.tm_build_errors
+--type-set=images=.jpg,.jpeg,.gif,.png
+--nolog
+--nonib
+--notmstuff
+--noxcode
+--noimages

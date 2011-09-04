@@ -1,0 +1,9 @@
+require 'redgreen/autotest'
+require 'autotest/rails'
+require 'autotest/fsevent'
+require 'autotest/growl'
+
+# Skip system files, since we don't want changes to those to trigger test runs
+Autotest.add_hook :initialize do |at|
+ %w(.svn .hg .git .DS_Store ._*).each {|exception| at.add_exception(exception)}
+end
