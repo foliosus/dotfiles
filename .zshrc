@@ -37,6 +37,7 @@ if [[ -n $PS1 ]]; then
   alias   vi="vim"
   alias   be="bundle exec "
   alias   zt="zeus test "
+  alias   bt="bridgetown"
 
   # Tell ZSH to use fancy autocompletion
   zstyle ':completion:*' completer _complete _ignored _approximate
@@ -63,6 +64,11 @@ if [[ -n $PS1 ]]; then
   export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+  # Initialize asdf
+  . /opt/homebrew/opt/asdf/libexec/asdf.sh
 fi
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+
